@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\User;
+use App\Role;
+use DB;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +19,8 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -25,7 +30,8 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        //
+        $roles =DB::table('roles')->get();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -34,9 +40,9 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -47,7 +53,7 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.users.show');
     }
 
     /**
@@ -58,7 +64,7 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.users.edit');
     }
 
     /**
@@ -70,7 +76,7 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('admin.users.update');
     }
 
     /**
@@ -81,6 +87,6 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return view('admin.users.destroy');
     }
 }
