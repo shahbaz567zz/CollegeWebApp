@@ -14,7 +14,7 @@
 </div>
 <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
+    <input type="password" class="form-control" id="pwd" name="password">
   </div>
 <div class="form-group">
   <label for="">Role:</label>
@@ -31,7 +31,10 @@
     <option value="1">Active</option>
   </select>
 </div>
-
+<div class="form-group">
+    <label for="">Upload Photo:</label>
+    <input type="file" class="form-control" name="photo_id" id="userProfilePic" placeholder="">
+  </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 {!! Form::close() !!}
 
