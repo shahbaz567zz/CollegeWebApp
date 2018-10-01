@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Create Users</h1>
-{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store']) !!}
+{!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store', 'enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
   <label for="">Name:</label>
   <input type="text" class="form-control" name="name" id="userName" placeholder="">
