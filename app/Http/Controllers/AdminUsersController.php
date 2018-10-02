@@ -79,7 +79,12 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.edit');
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name', 'id')->all();
+        // echo "<pre>";
+        // print_r($roles);
+        // exit;
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -89,8 +94,17 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
+        $user = User::findOrFail($id);
+        $input = $request->all();
+
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+
+        }
+
         return view('admin.users.update');
     }
 
