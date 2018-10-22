@@ -69,7 +69,7 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        return view('admin.users.show');
+        //return view('admin.users.show');
     }
 
     /**
@@ -120,6 +120,11 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        return view('admin.users.destroy');
+        $user = User::findOrFail($id);
+        $photo = Photo::findOrFail($user->photo->id);
+        unlink($_SERVER['DOCUMENT_ROOT']. $user->photo->file);
+        $user->delete();
+        $photo->delete();
+        return redirect('/admin/users');
     }
 }

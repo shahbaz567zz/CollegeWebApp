@@ -21,7 +21,11 @@
     <div class="form-group">
       {{ Form::label('photo_id') }} {{ Form::file('photo_id', null, ['class' => 'form-control']) }}
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button> {!! Form::close() !!}
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    {!! Form::close() !!}
+    {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]]) !!}
+      <br><button type="submit" class="btn btn-danger">Delete User</button>
+    {!! Form::close() !!}
   </div>
   <div class="col-sm-3">
     <img src="{{ $user->photo? $user->photo->file: 'http://placehold.it/400x400' }}" alt="" class="img img-responsive img-rounded">
