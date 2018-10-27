@@ -33,7 +33,7 @@
 </div>
 <div class="form-group">
     <label for="">Upload Photo:</label>
-    <input type="file" class="form-control" name="photo_id" id="userProfilePic" placeholder="">
+    <input type="file" class="form-control" name="photo_id" id="userProfilePic">
   </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 {!! Form::close() !!}
