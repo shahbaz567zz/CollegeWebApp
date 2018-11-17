@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+@include('includes.tinyeditor')
 <h1>Create Post</h1>
 {!! Form::open(['method' => 'POST', 'action' => 'AdminPostsController@store', 'enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
@@ -22,7 +22,7 @@
 </div>
 <div class="form-group">
     <label for="postBody">Description:</label>
-    <textarea class="form-control" rows="5" id="postBody"></textarea>
+    <textarea class="form-control" name="body" rows="5" id="postBody"></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 {!! Form::close() !!}

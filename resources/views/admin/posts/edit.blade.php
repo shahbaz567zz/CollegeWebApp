@@ -1,7 +1,7 @@
 @extends('layouts.admin') 
 @section('content')
-
-<h1>Edit User</h1>
+@include('includes.tinyeditor')
+<h1>Edit Post</h1>
 <div class="row">
   <div class="col-sm-9">
     {!! Form::model($post, ['method' => 'PATCH', 'action' => ['AdminPostsController@update', $post->id], 'files' => true]) !!}
@@ -19,18 +19,18 @@
     </div>
     <div class="form-group">
       {{ Form::label('body', 'Description:') }} 
-      {{ Form::text('body', null, ['class'=>'form-control']) }}
+      {{ Form::textarea('body', null, ['class'=>'form-control']) }}
     </div>
     
-    <button type="submit" class="btn btn-primary">Edit Post</button> 
+    <button type="submit" class="btn btn-primary edit-btn">Edit Post</button> 
     {!! Form::close() !!}
     {!! Form::open(['method' => 'DELETE', 'action' => ['AdminPostsController@destroy', $post->id]]) !!}
-      <br><button type="submit" class="btn btn-danger">Delete Post</button>
+      <br><button type="submit" class="btn btn-danger delete-btn">Delete Post</button>
     {!! Form::close() !!}
   </div>
   <div class="col-sm-3">
     <img src="{{ $post->photo? $post->photo->file: 'http://placehold.it/400x400' }}" alt="" class="img img-responsive img-rounded">
   </div>
-</div>
+</div><hr><br><br>
   @include('includes.form_error')
 @endsection

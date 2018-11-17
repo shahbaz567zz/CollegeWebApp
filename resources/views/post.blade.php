@@ -27,12 +27,15 @@
             <hr>
 
             <!-- Preview Image -->
+            
+            
+            @if($post->photo)
             <img class="img-responsive" src="{{ $post->photo->file }}" alt="">
-
+            @endif
             <hr>
 
             <!-- Post Content -->
-            {{ $post->body }}
+            {!! $post->body !!}
 
             <hr>
 
@@ -40,7 +43,7 @@
             {{ session('comment_message') }}
             @endif
             <!-- Blog Comments -->
-
+            @if(Auth::check())
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
@@ -54,56 +57,65 @@
 
                 {!! Form::close() !!}
             </div>
-
+            @endif
             <hr>
 
             <!-- Posted Comments -->
-
-            <!-- Comment -->
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">Start Bootstrap
-                        <small>August 25, 2014 at 9:30 PM</small>
-                    </h4>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                    Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-            </div>
-
-            <!-- Comment -->
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">Start Bootstrap
-                        <small>August 25, 2014 at 9:30 PM</small>
-                    </h4>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                    Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    <!-- Nested Comment -->
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Nested Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
-                            </h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                            commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-                            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <div class="posted-comments">
+                @if(count($comments)>0)
+                <!-- Comment -->
+                @foreach($comments as $comment)
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object comment-profile-pic" height="50" src="{{ $comment->user->photo->file }}"
+                            alt="No Image">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{ $comment->author }}
+                            <small>{{ $comment->created_at->diffForHumans() }}</small>
+                        </h4>
+                        {{ $comment->body }}
+                        <div class="form-group show-reply">
+                            <span><small>{{ count($comment->replies) }} comments </small></span>
+                            <span class="fa fa-reply"> <a href="javascript:void(0)" data-comment-id="{{ $comment->id }}" class="reply-toggle" > Reply</a></span>
                         </div>
-                    </div>
-                    <!-- End Nested Comment -->
-                </div>
-            </div>
 
+                        <!-- Nested Comment -->
+                        <div class="comment-reply" id="comment-reply-{{ $comment->id }}">
+                        @if(count($comment->replies)>0)
+                        @foreach($comment->replies as $reply)
+                        @if($reply->is_active == 1)
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" height="50" src="{{ $reply->user->photo->file }}" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ $reply->author }}
+                                    <small>{{ $reply->created_at->diffForHumans() }}</small>
+                                </h4>
+                                {{ $reply->body }}
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+                        @endif
+                        {!! Form::open(['method'=>'post', 'action'=>'CommentRepliesController@createReply']) !!}
+                        <input type="hidden" value="{{ $comment->id }}" name="comment_id">
+                        <div class="form-group">
+                            <label for="reply-body">Reply:</label>
+                            <textarea name="body" class="form-control" rows="3" id="reply-body"></textarea>
+                        </div>
+                        <input type="submit" value="Submit Reply" class="btn btn-primary">
+                        {!! Form::close() !!}
+                        </div>
+                        <!-- End Nested Comment -->
+
+                    </div>
+                </div>
+                @endforeach
+                @endif
+                <!-- Comment -->
+            </div>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
@@ -181,4 +193,10 @@
 
 </div>
 
+@stop
+
+@section('script')
+<script>
+
+</script>    
 @stop

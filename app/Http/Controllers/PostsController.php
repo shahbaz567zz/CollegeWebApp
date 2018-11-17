@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Comment;
 use App\Post;
-use Auth;
 
-class PostCommentsController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,9 @@ class PostCommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::paginate(7);
-        return view('admin.comments.index',compact('comments'));
+        $posts = Post::paginate(10);
+        $recentPosts = Post::latest()->limit(3)->get();
+        return view('post.index',compact('posts','recentPosts'));
     }
 
     /**
@@ -29,7 +28,7 @@ class PostCommentsController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,19 +39,7 @@ class PostCommentsController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-
-        $data = [
-            'post_id' => $request->post_id,
-            'author' => $user->name,
-            'email' => $user->email,
-            'body' => $request->body,
-            'user_id' => $user->id
-        ];
-
-        Comment::create($data);
-        $request->session()->flash('comment_message','Your message has been submitted and waiting moderation');
-        return redirect()->back();
+        //
     }
 
     /**
@@ -63,9 +50,7 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        $comments = $post->comments;
-        return view('admin.comments.show',compact('comments'));
+        //
     }
 
     /**
@@ -88,8 +73,7 @@ class PostCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $comment = Comment::findOrFail($id)->update($request->all());
-        return redirect()->back();
+        //
     }
 
     /**
@@ -100,8 +84,6 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-        Comment::findOrFail($id)->delete();
-        return redirect()->back();
+        //
     }
-
 }

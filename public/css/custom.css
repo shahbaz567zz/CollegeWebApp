@@ -1,0 +1,96 @@
+.comment-reply{
+    display:none;
+}
+
+.logo-small{
+    color: #ffb320;
+    font-size: 1.5em;
+}
+
+.logo-large{
+    color: #ffffff;
+    font-size: 1.7em;
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/cork.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-text h1, .hero-text p {
+    color: white;
+  }
+
+
+.cata.feeds {
+    background-color: #1db2db;
+    font-size: 1.5em;
+}
+
+.cata.tclg{
+    background-color: #db1dbd;
+    font-size: 1.5em;
+}
+
+.cata.texam{
+    background-color: #1ddb67;
+    font-size: 1.5em;
+}
+
+.cata.cutoff{
+    background-color: #dba71d;
+    font-size: 1.5em;
+}
+
+.headline_btn {
+    margin-right: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    padding: 4px 20px;
+}
+
+.headline_btn.pink{
+    background-color: #ff1493;
+}
+
+.marq-item {
+    margin-right: 45px;
+}
+
+.marq-content {
+    display: inline-flex;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-text p {
+        font-size: 0.8em;
+    }
+
+    .widget-item {
+        width: 21em;
+        margin-bottom: 20%;
+    }
+   
+}

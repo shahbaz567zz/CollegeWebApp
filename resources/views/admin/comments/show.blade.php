@@ -14,7 +14,6 @@
                   <th>Email</th>
                   <th>Body</th>
                   <th>Post</th>
-                  <th>Replies</th>
                   <th>Approve</th>
                   <th>Delete</th>
                 </tr>
@@ -28,7 +27,6 @@
                   <td>{{ $comment->email }}</td>
                   <td>{{ $comment->body }}</td>
                   <td><a href="{{ route('home.post', $comment->post->id) }}">view post</a></td>
-                  <td><a href="{{ route('admin.comments.replies.show', $comment->id) }}">view replies</a></td>
                   <td>
                     @if($comment->is_active == 1)
                     {{ Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update',$comment->id]]) }}
@@ -51,11 +49,6 @@
                   @endforeach
               </tbody>
             </table>
-            </div>
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-5">
-                {{ $comments->render() }}
-              </div>
             </div>
         @else
         <h1 class="text-center">No Comments</h1>

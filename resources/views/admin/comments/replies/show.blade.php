@@ -2,8 +2,8 @@
 
 @section('content')
     
-    @if(count($comments)>0)
-    <h1>Comments</h1>
+    @if(count($replies)>0)
+    <h1>Replies</h1>
     <div class="table-responsive comments-table">          
             <table class="table">
               <thead>
@@ -14,36 +14,34 @@
                   <th>Email</th>
                   <th>Body</th>
                   <th>Post</th>
-                  <th>Replies</th>
                   <th>Approve</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
-                  @foreach ($comments as $comment)
+                  @foreach ($replies as $reply)
                   <tr>
-                  <td>{{ $comment->id }}</td>
-                  <td>{{ $comment->author }}</td>
-                  <td><img src="{{ $comment->user->photo->file }}" alt="No Image" height="40"></td>
-                  <td>{{ $comment->email }}</td>
-                  <td>{{ $comment->body }}</td>
-                  <td><a href="{{ route('home.post', $comment->post->id) }}">view post</a></td>
-                  <td><a href="{{ route('admin.comments.replies.show', $comment->id) }}">view replies</a></td>
+                  <td>{{ $reply->id }}</td>
+                  <td>{{ $reply->author }}</td>
+                  <td><img src="{{ $reply->user->photo->file }}" alt="No Image" height="40"></td>
+                  <td>{{ $reply->email }}</td>
+                  <td>{{ $reply->body }}</td>
+                  <td><a href="{{ route('home.post', $reply->comment->post->id) }}">view post</a></td>
                   <td>
-                    @if($comment->is_active == 1)
-                    {{ Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update',$comment->id]]) }}
+                    @if($reply->is_active == 1)
+                    {{ Form::open(['method'=>'PATCH', 'action'=>['CommentRepliesController@update',$reply->id]]) }}
                       <input type="hidden" value="0" name="is_active">  
                       <input type="submit" class="btn btn-info" value="Reject">
                     {{ Form::close() }}
                     @else
-                    {{ Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update',$comment->id]]) }}
+                    {{ Form::open(['method'=>'PATCH', 'action'=>['CommentRepliesController@update',$reply->id]]) }}
                       <input type="hidden" value="1" name="is_active">  
                       <input type="submit" class="btn btn-success" value="Approve">
                     {{ Form::close() }}
                     @endif
                   </td>
                   <td>
-                    {{ Form::open(['method'=>'DELETE', 'action'=>['PostCommentsController@destroy',$comment->id]]) }}
+                    {{ Form::open(['method'=>'DELETE', 'action'=>['CommentRepliesController@destroy',$reply->id]]) }}
                       <input type="submit" class="btn btn-danger" value="Delete">
                     {{ Form::close() }}
                   </td>
@@ -52,12 +50,7 @@
               </tbody>
             </table>
             </div>
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-5">
-                {{ $comments->render() }}
-              </div>
-            </div>
         @else
-        <h1 class="text-center">No Comments</h1>
+        <h1 class="text-center">No Replies</h1>
     @endif
 @stop

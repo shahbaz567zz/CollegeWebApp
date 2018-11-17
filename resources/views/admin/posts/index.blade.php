@@ -12,7 +12,9 @@
             <th>PHOTO</th>
             <th>TITLE</th>
             <th>BODY</th>
-            <th>CREATED</th>
+            <th>POST</th>
+            <th>COMMENTS</th>
+            <th>EDIT</th>
             <th>UPDATED</th>
         </tr>
         </thead>
@@ -21,12 +23,14 @@
                 @foreach ($posts as $post)
                 <tr>
                     <td scope="row">{{$post->id}}</td>
-                    <td scope="row"><a href="{{ route('admin.posts.edit', $post->id) }}">{{$post->user->name}}</a></td>
+                    <td scope="row">{{$post->user->name}}</td>
                     <td scope="row">{{ $post->category ? $post->category->name : "Uncategorized" }}</td>
                     <td><img height="50" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/400x400' }}" alt=""></td>
                     <td scope="row">{{ $post->title }}</td>
                     <td scope="row">{{ $post->body }}</td>
-                    <td scope="row">{{$post->created_at->diffForHumans()}}</td>
+                    <td scope="row"><a href="{{ route('home.post',$post->id) }}">view post</a></td>
+                    <td scope="row"><a href="{{ route('admin.comments.show', $post->id) }}">view comments</a></td>
+                    <td scope="row"><a href="{{ route('admin.posts.edit', $post->id) }}">edit</a></td>
                     <td scope="row">{{$post->updated_at->diffForHumans()}}</td>
                 </tr>
                 @endforeach
