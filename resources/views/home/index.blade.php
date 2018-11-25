@@ -101,7 +101,9 @@
 						</div>
 						<div class="rgi-content">
 							<h5>{!! $post->title !!}</h5>
-							<p>{!! $post->body !!}</p>
+							<p>{!! strlen($post->body) > 300 ? substr($post->body,0,300)."..." : $post->body !!}
+								<a href="{{ route('home.post', $post->id) }}">Read More</a>
+							</p>
 							<a href="#" class="comment">{{ count($post->comment) }} Comments</a>
 							<div class="rgi-extra">
 								<div class="rgi-star"><img src="{{ asset('images/icons/star.png') }}" alt=""></div>
