@@ -29,10 +29,10 @@
     <input type="file" class="form-control" name="photo_id" id="clgPhoto">
 </div>
 <div class="checkbox">
-    <label><input type="checkbox" name='is_govt' value="yes">Is Govt</label>
+    <label><input type="checkbox" name='is_govt' value="yes" checked>Is Govt</label>
 </div>
 <div class="checkbox">
-    <label><input type="checkbox" name='is_central' value="yes">Is Central</label>
+    <label><input type="checkbox" name='is_central' value="yes" checked>Is Central</label>
 </div>
 <div class="form-group">
     <label for="clgBody">Description:</label>

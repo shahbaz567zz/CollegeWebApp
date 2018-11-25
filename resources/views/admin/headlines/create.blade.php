@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Create Post</h1>
+<h1>Create Headline</h1>
 {!! Form::open(['method' => 'POST', 'action' => 'AdminHeadlinesController@store', 'enctype' => 'multipart/form-data']) !!}
 <div class="form-group">
     <label for="category">Category:</label>

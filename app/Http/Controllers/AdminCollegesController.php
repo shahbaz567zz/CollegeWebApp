@@ -19,7 +19,8 @@ class AdminCollegesController extends Controller
      */
     public function index()
     {
-        return 'college List';
+        $colleges = College::all();
+        return view('admin.colleges.index',compact('colleges'));
     }
 
     /**
@@ -61,7 +62,7 @@ class AdminCollegesController extends Controller
         $collegeId = $college->create($input);
         $college = College::findOrFail($collegeId['id']);
         $college->categories()->sync($request->category_id);
-        return 'successfully created';
+        return redirect('admin/colleges');
     }
 
     /**
@@ -83,7 +84,10 @@ class AdminCollegesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Collegecategory::all();
+        $regions =  Collegeregion::all();
+        $college = College::findOrFail($id);
+        return view('admin.colleges.edit', compact('categories','regions','college'));
     }
 
     /**
@@ -95,7 +99,28 @@ class AdminCollegesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // print_r($request->is_govt);
+        // exit;
+
+        $college = College::findOrFail($id);
+        $input['name'] = $request->name;
+        $input['region_id'] = $request->region_id;
+        $input['body'] = $request->body;
+        $input['is_govt'] = $request->is_govt=='yes'?'1':'0';
+        $input['is_central'] = $request->is_central=='yes'?'1':'0';
+
+
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file' => $name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        $collegeId = $college->update($input);
+        $college = College::findOrFail($id);
+        $college->categories()->sync($request->category_id);
+        return redirect('/admin/colleges');
     }
 
     /**
@@ -106,6 +131,14 @@ class AdminCollegesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $college = College::findOrFail($id);
+        if($college->photo){
+            $photo = Photo::findOrFail($college->photo->id);
+            unlink($_SERVER['DOCUMENT_ROOT']. $college->photo->file);
+            $photo->delete();
+        }
+        
+        $college->delete();
+        return redirect('/admin/colleges');
     }
 }
