@@ -18,6 +18,8 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 Route::get('/post', ['as'=>'all.post', 'uses'=>'PostsController@index']);
+Route::get('/college/{id}', ['as'=>'home.college', 'uses'=>'CollegesController@getCollege']);
+Route::get('/college', ['as'=>'all.college', 'uses'=>'CollegesController@index']);
 Route::get('/comingsoon', ['as'=>'home.comingsoon', 'uses'=>'HomeController@comingsoon']);
 
 Route::group(['middleware' => 'admin'], function(){
@@ -28,6 +30,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/media', 'AdminMediasController');
     Route::resource('admin/comments', 'PostCommentsController');
     Route::resource('admin/comments/replies', 'CommentRepliesController');
+    Route::resource('admin/colleges', 'AdminCollegesController');
 });
 
 Route::group(['middleware' => 'auth'], function(){
