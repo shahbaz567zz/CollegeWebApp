@@ -96,7 +96,7 @@
                 @foreach($recentPosts as $post)
 				<div class="col-lg-4 col-md-6">
 					<div class="recent-game-item">
-						<div class="rgi-thumb set-bg" data-setbg="{{ $post->photo->file? $post->photo->file: asset('images/noimg.jpg') }}">
+						<div class="rgi-thumb set-bg" data-setbg="{{ $post->photo? $post->photo->file: asset('images/noimg.jpg') }}">
 							<div class="cata new">new</div>
 						</div>
 						<div class="rgi-content">
