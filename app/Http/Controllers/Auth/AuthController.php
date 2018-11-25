@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -38,6 +38,18 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+    /**
+     * Redirect the user based on his role
+     */
+    
+    protected function authenticated($request, $user)
+    {
+        if($user->role->name == 'administrator') {
+            return redirect('/admin');
+        }
+
+        return redirect('/');
     }
 
     /**
@@ -66,6 +78,8 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role_id' => $data['role_id'],
+            'is_active' => $data['is_active'],
             'password' => bcrypt($data['password']),
         ]);
     }

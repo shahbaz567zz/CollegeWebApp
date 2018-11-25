@@ -40,9 +40,19 @@
 				{{-- <img src="{{ asset('images/logo.png') }}" alt=""> --}}
 				<span class="logo-small">college</span><span class="logo-large">T</span><span class="logo-small">point</span>
 			</a>
-			<div class="user-panel">
-				<a href="#">Login</a>  /  <a href="#">Register</a>
-			</div>
+
+			
+				<!-- Authentication Links -->
+				@if (Auth::guest())
+				<div class="user-panel">
+					<a href="{{ url('/login') }}">Login</a>  /  <a href="{{ url('/register') }}">Register</a>
+				</div>
+				@else
+					<div class="logged-user">
+						<span class="u-name">Hi, {{ Auth::user()->name }}</span> / <span class="u-logout"><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></span>
+					</div>
+				@endif
+	
 			<!-- responsive -->
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
