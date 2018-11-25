@@ -26,6 +26,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin', 'AdminController@index');
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
+    Route::resource('admin/headlines', 'AdminHeadlinesController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/media', 'AdminMediasController');
     Route::resource('admin/comments', 'PostCommentsController');

@@ -3,16 +3,7 @@
 @section('content')
 
 <!-- Page section -->
-<?php  
-echo "<pre>";
-foreach($colleges as $college){
-    foreach($college->categories as $cat){
-        print_r($cat->name);
-    }
-   
-}
-echo "</pre>";
-?>
+
 <section class="page-section recent-game-page spad">
     <div class="container">
         <div class="row">
@@ -31,7 +22,7 @@ echo "</pre>";
                             </div>
                             <div class="rgi-content">
                                 <h5>{{ $college->name }}</h5>
-                                <p>{!! $college->body !!}</p>
+                                
                                 <p class="comment">{{ count($college->comments) }} Comments</p>
                             </div>
                         </div>
