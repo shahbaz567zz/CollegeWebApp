@@ -19,6 +19,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 Route::get('/post', ['as'=>'all.post', 'uses'=>'PostsController@index']);
 Route::get('/college/{id}', ['as'=>'home.college', 'uses'=>'CollegesController@getCollege']);
+Route::post('/college/comment', ['as'=>'college.comment.post', 'uses'=>'CollegesController@storeCollegeComment']);
+Route::post('/college/comment/reply', ['as'=>'college.comment.reply.post', 'uses'=>'CollegesController@storeCollegeCommentReply']);
 Route::get('/college', ['as'=>'all.college', 'uses'=>'CollegesController@index']);
 Route::get('/comingsoon', ['as'=>'home.comingsoon', 'uses'=>'HomeController@comingsoon']);
 

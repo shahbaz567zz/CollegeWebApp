@@ -67,7 +67,7 @@
                 @foreach($comments as $comment)
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object comment-profile-pic" height="50" src="{{ $comment->user->photo->file }}"
+                        <img class="media-object comment-profile-pic" height="50" src="{{ $comment->user->photo?$comment->user->photo->file:'' }}"
                             alt="No Image">
                     </a>
                     <div class="media-body">

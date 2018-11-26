@@ -28,4 +28,8 @@ class College extends Model
     public function photo(){
         return $this->belongsTo('App\Photo','photo_id');
     }
+
+    public function comments(){
+        return $this->hasMany('App\CollegeComment');
+    }
 }

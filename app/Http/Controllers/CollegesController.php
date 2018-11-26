@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\College;
+use Auth;
+use App\CollegeComment;
+use App\CollegeCommentReply;
 
 class CollegesController extends Controller
 {
@@ -94,4 +97,38 @@ class CollegesController extends Controller
         $comments = $college->comments()->where('is_active',1)->get();
         return view('college.single', compact('college','comments'));
     }
+
+    public function storeCollegeComment(Request $request){
+        $user = Auth::user();
+
+        $data = [
+            'college_id' => $request->college_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'body' => $request->body,
+            'user_id' => $user->id
+        ];
+
+        CollegeComment::create($data);
+        $request->session()->flash('comment_message','Your message has been submitted and waiting moderation');
+        return redirect()->back();
+    }
+
+    public function storeCollegeCommentReply(Request $request){
+        $user = Auth::user();
+
+        $data = [
+            'college_comment_id' => $request->college_comment_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'body' => $request->body,
+            'user_id' => $user->id
+        ];
+
+        CollegeCommentReply::create($data);
+        $request->session()->flash('comment_message','Your reply has been submitted and waiting moderation');
+        return redirect()->back();
+
+    }
+    
 }
