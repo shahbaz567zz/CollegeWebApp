@@ -121,10 +121,12 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $photo = Photo::findOrFail($user->photo->id);
-        unlink($_SERVER['DOCUMENT_ROOT']. $user->photo->file);
+        if($user->photo){
+            $photo = Photo::findOrFail($user->photo->id);
+            unlink($_SERVER['DOCUMENT_ROOT']. $user->photo->file);
+            $photo->delete();
+        }
         $user->delete();
-        $photo->delete();
         return redirect('/admin/users');
     }
 }
