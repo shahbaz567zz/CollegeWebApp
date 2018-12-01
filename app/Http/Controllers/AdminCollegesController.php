@@ -9,6 +9,7 @@ use App\Collegecategory;
 use App\Collegeregion;
 use App\Photo;
 use App\College;
+use App\CollegeComment;
 
 class AdminCollegesController extends Controller
 {
@@ -141,4 +142,6 @@ class AdminCollegesController extends Controller
         $college->delete();
         return redirect('/admin/colleges');
     }
+
+   
 }

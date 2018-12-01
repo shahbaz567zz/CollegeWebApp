@@ -16,7 +16,7 @@ class CollegeCommentReply extends Model
     ];
 
     public function comment(){
-        return $this->belongsTo('App\CollegeComment');
+        return $this->belongsTo('App\CollegeComment','college_comment_id');
     }
     public function user(){
         return $this->belongsTo('App\User');

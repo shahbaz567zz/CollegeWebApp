@@ -176,6 +176,9 @@
                                 <li>
                                     <a href="{{ route('admin.college.regions.index') }}">College Regions</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.comment', 'CollegeComments') }}">All Comments</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

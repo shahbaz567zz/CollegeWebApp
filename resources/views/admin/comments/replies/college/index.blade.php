@@ -13,7 +13,7 @@
                   <th>Author Photo</th>
                   <th>Email</th>
                   <th>Body</th>
-                  <th>Post</th>
+                  <th>College</th>
                   <th>Approve</th>
                   <th>Delete</th>
                 </tr>
@@ -26,7 +26,7 @@
                   <td><img src="{{ $reply->user->photo?$reply->user->photo->file:"" }}" alt="No Image" height="40"></td>
                   <td>{{ $reply->email }}</td>
                   <td>{{ $reply->body }}</td>
-                  <td><a href="{{ route('home.post', $reply->comment->post->id) }}">view post</a></td>
+                  <td><a href="{{ route('home.college', $reply->comment->college->id) }}">view college</a></td>
                   <td>
                     @if($reply->is_active == 1)
                     {{ Form::open(['method'=>'PATCH', 'action'=>['CommentRepliesController@update',$reply->id]]) }}
@@ -34,7 +34,7 @@
                       <input type="submit" class="btn btn-info" value="Reject">
                     {{ Form::close() }}
                     @else
-                    {{ Form::open(['method'=>'PATCH', 'action'=>['CommentRepliesController@update',$reply->id]]) }}
+                    {{ Form::open(['method'=>'PATCH', 'action'=>['AdminCommentRepliesController@update',$reply->id]]) }}
                       <input type="hidden" value="1" name="is_active">  
                       <input type="submit" class="btn btn-success" value="Approve">
                     {{ Form::close() }}
