@@ -104,9 +104,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	
-
+	<script src="{{asset('js/libs.js')}}"></script>
+    <script src="{{asset('js/blog-post.js')}}"></script>
 	<script src="{{asset('js/main.js')}}"></script>
     </body>
 </html>

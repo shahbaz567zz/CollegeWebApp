@@ -19,8 +19,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 Route::get('/post', ['as'=>'all.post', 'uses'=>'PostsController@index']);
 Route::get('/college/{id}', ['as'=>'home.college', 'uses'=>'CollegesController@getCollege']);
-Route::post('/college/comment', ['as'=>'college.comment.post', 'uses'=>'CollegesController@storeCollegeComment']);
-Route::post('/college/comment/reply', ['as'=>'college.comment.reply.post', 'uses'=>'CollegesController@storeCollegeCommentReply']);
+
+
 Route::get('/college', ['as'=>'all.college', 'uses'=>'CollegesController@index']);
 Route::get('/comingsoon', ['as'=>'home.comingsoon', 'uses'=>'HomeController@comingsoon']);
 
@@ -42,5 +42,9 @@ Route::group(['middleware' => 'admin'], function(){
 });
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::post('comment', 'PostCommentsController@store');
     Route::post('comment/reply', 'CommentRepliesController@createReply');
+    Route::post('college/comment/reply', ['as'=>'college.comment.reply.post', 'uses'=>'CollegesController@storeCollegeCommentReply']);
+    Route::post('college/comment', ['as'=>'college.comment.post', 'uses'=>'CollegesController@storeCollegeComment']);
+    
 });
