@@ -1,4 +1,4 @@
-@extends('layouts.college-single')
+@extends('layouts.main')
 
 @section('content')
 

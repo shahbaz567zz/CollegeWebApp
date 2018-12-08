@@ -19,7 +19,7 @@
                             </div>
                             <div class="rgi-content">
                                 <h5>{{ $post->title }}</h5>
-                                <p>{!! $post->body !!}</p>
+                                <p>{!! strlen($post->body)>300 ? substr($post->body,0,300)."<span class='read-more text-info'>... Read More</span>" : $post->body !!}</p>
                                 <p class="comment">{{ count($post->comments) }} Comments</p>
                                 <div class="rgi-extra">
                                     <div class="rgi-star"><img src="{{ asset('images/icons/star.png') }}" alt=""></div>
