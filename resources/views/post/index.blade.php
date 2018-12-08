@@ -60,56 +60,47 @@
                         
                     </div>
                 </div>
-                <!-- widget -->
+                <!-- Top Comments -->
                 <div class="widget-item">
                     <h4 class="widget-title">Top Comments</h4>
                     <div class="top-comment">
+                        @foreach ($topComments as $comment)
                         <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/1.jpg"></div>
+                            <div class="tc-thumb set-bg" data-setbg="{{ $comment->user->photo?$comment->user->photo->file:'' }}"></div>
                             <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span> Lorem consec ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
+                                <p><a href="#">{{ $comment->author }}</a> <span>on</span> {{ $comment->post->title }}</p>
+                                <div class="tc-date">{{ $comment->created_at->diffForHumans() }}</div>
                             </div>
                         </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/2.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">Michael James</a> <span>on</span>Cras sit amet sapien aliquam</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="img/authors/3.jpg"></div>
-                            <div class="tc-content">
-                                <p><a href="#">Justin More</a> <span>on</span> Lorem ipsum dolor consecsit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <!-- widget -->
+                <!-- Top Comments End -->
+                
+                <!-- Advertisement widget -->
                 <div class="widget-item">
                     <div class="feature-item set-bg" data-setbg="img/features/1.jpg">
-                        <span class="cata new">new</span>
+                        <span class="cata new">Ad Space</span>
                         <div class="fi-content text-white">
-                            <h5><a href="#">Suspendisse ut justo tem por, rutrum</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a href="#" class="fi-comment">3 Comments</a>
+                            <h5><a href="#">This Space is Reserved for Advertisement.</a></h5>
+                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
+                            {{-- <a href="#" class="fi-comment">3 Comments</a> --}}
                         </div>
                     </div>
                 </div>
-                <!-- widget -->
+                
                 <div class="widget-item">
                     <div class="review-item">
-                        <div class="review-cover set-bg" data-setbg="img/review/1.jpg">
+                        {{-- <div class="review-cover set-bg" data-setbg="img/review/1.jpg">
                             <div class="score yellow">9.3</div>
-                        </div>
+                        </div> --}}
                         <div class="review-text">
-                            <h5>Assasin’’s Creed</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
+                            <h5>Contact Admin</h5>
+                            <p>If you want to use this space to advertise with us. Please mail us @ <a href="mailto:collegeuturn@gmail.com?subject=Advertisement%20Request">collegeuturn@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
+                <!-- Advertisement widget -->
             </div>
         </div>
     </div>

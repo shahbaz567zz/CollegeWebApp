@@ -73,6 +73,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{asset('js/libs.js')}}"></script>
     <script src="{{asset('js/blog-post.js')}}"></script>
+	<script src="{{asset('js/main.js')}}"></script>
 
 
     @yield('script')

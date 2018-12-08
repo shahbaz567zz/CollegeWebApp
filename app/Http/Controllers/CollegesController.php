@@ -21,9 +21,10 @@ class CollegesController extends Controller
     {
         $colleges = College::paginate(10);
         $recentColleges = College::latest()->limit(3)->get();
+        $topComments = CollegeComment::latest()->limit(3)->get();
         // return $colleges;
         // return $recentColleges;
-        return view('college.index',compact('colleges','recentColleges'));
+        return view('college.index',compact('colleges','recentColleges','topComments'));
     }
 
     /**

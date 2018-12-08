@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Post;
+use App\Comment;
 
 class PostsController extends Controller
 {
@@ -18,7 +19,8 @@ class PostsController extends Controller
     {
         $posts = Post::paginate(10);
         $recentPosts = Post::latest()->limit(3)->get();
-        return view('post.index',compact('posts','recentPosts'));
+        $topComments = Comment::latest()->limit(3)->get();
+        return view('post.index',compact('posts','recentPosts', 'topComments'));
     }
 
     /**
