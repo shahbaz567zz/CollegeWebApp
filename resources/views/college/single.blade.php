@@ -7,7 +7,7 @@
     <div class="row">
 
         <!-- Blog Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-8"><br>
 
             <!-- Blog Post -->
 
@@ -114,11 +114,11 @@
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
+        <div class="col-md-4"><br>
 
             <!-- Blog Search Well -->
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>College Search</h4>
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
@@ -132,42 +132,48 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Blog Categories</h4>
+                <h4>College Categories</h4>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">To be added soon.</a>
+                            </li>
+                            {{-- <li><a href="#">Category Name</a>
                             </li>
                             <li><a href="#">Category Name</a>
                             </li>
                             <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
                 <!-- /.row -->
             </div>
 
-            <!-- Side Widget Well -->
-            <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus
-                    laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+            <!-- Advertisement widget -->
+            <div class="widget-item">
+                <div class="feature-item set-bg" data-setbg="img/features/1.jpg">
+                    <span class="cata new">Ad Space</span>
+                    <div class="fi-content text-white">
+                        <h5><a href="#">This Space is Reserved for Advertisement.</a></h5>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> --}}
+                        {{-- <a href="#" class="fi-comment">3 Comments</a> --}}
+                    </div>
+                </div>
             </div>
+            
+            <div class="widget-item">
+                <div class="review-item">
+                    {{-- <div class="review-cover set-bg" data-setbg="img/review/1.jpg">
+                        <div class="score yellow">9.3</div>
+                    </div> --}}
+                    <div class="review-text">
+                        <h5>Contact Admin</h5>
+                        <p>If you want to use this space to advertise with us. Please mail us @ <a href="mailto:collegeuturn@gmail.com?subject=Advertisement%20Request">collegeuturn@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Advertisement widget -->
 
         </div>
 
