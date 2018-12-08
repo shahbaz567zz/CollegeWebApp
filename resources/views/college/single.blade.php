@@ -38,7 +38,7 @@
             {{ session('comment_message') }}
             @endif
             <!-- Blog Comments -->
-            @if(Auth::check())
+            {{-- @if(Auth::check()) --}}
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
@@ -52,7 +52,7 @@
 
                 {!! Form::close() !!}
             </div>
-            @endif
+            {{-- @endif --}}
             <hr>
 
             <!-- Posted Comments -->
