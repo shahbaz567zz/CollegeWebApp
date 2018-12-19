@@ -87,6 +87,11 @@
     color: #ff0000;
 }
 
+thead{
+    background: #1c2327;
+    color: #ffffff;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .hero-text h1 {
