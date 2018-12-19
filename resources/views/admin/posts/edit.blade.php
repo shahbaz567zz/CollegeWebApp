@@ -19,7 +19,10 @@
     </div>
     <div class="form-group">
       {{ Form::label('body', 'Description:') }} 
-      {{ Form::textarea('body', null, ['class'=>'form-control']) }}
+      {{ Form::textarea('body', null, ['class'=>'form-control', 'id'=>'postTextArea']) }}
+    </div>
+    <div class="form-group">
+        <div id="resTableDiv"></div>
     </div>
     
     <button type="submit" class="btn btn-primary edit-btn">Edit Post</button> 
@@ -30,7 +33,13 @@
   </div>
   <div class="col-sm-3">
     <img src="{{ $post->photo? $post->photo->file: 'http://placehold.it/400x400' }}" alt="" class="img img-responsive img-rounded">
+    <div><br><br><br><br><br><br><br><br>
+      <button class="btn btn-info" id="tabResBtn" >Make table responsive</button>
+    </div>
   </div>
-</div><hr><br><br>
+</div><hr><br><br><br><br><br><br>
   @include('includes.form_error')
+@endsection
+@section('script')
+<script src="{{asset('js/create-post.js')}}"></script>
 @endsection
