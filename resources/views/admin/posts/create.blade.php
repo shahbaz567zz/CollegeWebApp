@@ -35,6 +35,9 @@
         <div style="margin-top:150%;">
             <button class="btn btn-info" id="tabResBtn" >Make table responsive</button>
         </div>
+        <div><br>
+            <button class="btn btn-info" id="fixColBtn" >Make table responsive and fix first column</button>
+        </div>
     </div>
 </div>
 @include('includes.form_error')

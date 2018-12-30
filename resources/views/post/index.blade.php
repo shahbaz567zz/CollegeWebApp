@@ -14,12 +14,12 @@
                     <div class="col-md-6">
                         <a href="{{ route('home.post', $post->id) }}">
                         <div class="recent-game-item">
-                            <div class="rgi-thumb set-bg" data-setbg="{{ $post->photo->file }}">
+                            <div class="rgi-thumb set-bg" data-setbg="{{ $post->photo?$post->photo->file:'' }}">
                                 <div class="cata {{ $color[1] }}">{{ $post->category->name }}</div>
                             </div>
                             <div class="rgi-content">
                                 <h5>{{ $post->title }}</h5>
-                                <p>{!! strlen($post->body)>300 ? substr($post->body,0,300)."<span class='read-more text-info'>... Read More</span>" : $post->body !!}</p>
+                                <p>{!! strlen($post->body)>300 ? (strpos(substr($post->body,0,300), '<table') ?strip_tags(substr($post->body,0,strpos(substr($post->body,0,300), '<table')))."<span class='read-more text-info'>... Read More</span>": strip_tags(substr($post->body,0,300))."<span class='read-more text-info'>... Read More</span>") : strip_tags($post->body) !!}</p>
                                 <p class="comment">{{ count($post->comments) }} Comments</p>
                                 <div class="rgi-extra">
                                     <div class="rgi-star"><img src="{{ asset('images/icons/star.png') }}" alt=""></div>
@@ -49,7 +49,7 @@
                     <div class="latest-blog">
                         @foreach($recentPosts as $recentpost)
                         <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="{{ $recentpost->photo->file }}"></div>
+                            <div class="lb-thumb set-bg" data-setbg="{{ $recentpost->photo?$recentpost->photo->file:'' }}"></div>
                             <div class="lb-content">
                                 <div class="lb-date">{{ $recentpost->updated_at->diffForHumans() }}</div>
                                 <p>{!! $recentpost->title !!}</p>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <!-- Top Comments End -->
-                
+
                 <!-- Advertisement widget -->
                 <div class="widget-item">
                     <div class="feature-item set-bg" data-setbg="img/features/1.jpg">

@@ -27,7 +27,7 @@
                     <td scope="row">{{ $post->category ? $post->category->name : "Uncategorized" }}</td>
                     <td><img height="50" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/400x400' }}" alt=""></td>
                     <td scope="row">{{ $post->title }}</td>
-                    <td scope="row">{{ $post->body }}</td>
+                    <td scope="row">{{ strlen($post->body)>300 ? strip_tags(substr($post->body,0,300))."..." : strip_tags($post->body) }}</td>
                     <td scope="row"><a href="{{ route('home.post',$post->id) }}">view post</a></td>
                     <td scope="row"><a href="{{ route('admin.comments.show', $post->id) }}">view comments</a></td>
                     <td scope="row"><a href="{{ route('admin.posts.edit', $post->id) }}">edit</a></td>

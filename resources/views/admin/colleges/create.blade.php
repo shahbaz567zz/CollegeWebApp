@@ -50,6 +50,9 @@
         <div style="margin-top:250%;">
             <button class="btn btn-info" id="tabResBtn" >Make table responsive</button>
         </div>
+        <div><br>
+            <button class="btn btn-info" id="fixColBtn" >Make table responsive and fix first column</button>
+        </div>
     </div>
 </div>
 <br /><br />
