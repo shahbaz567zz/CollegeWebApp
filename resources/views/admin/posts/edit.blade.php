@@ -33,9 +33,12 @@
   </div>
   <div class="col-sm-3">
     <img src="{{ $post->photo? $post->photo->file: 'http://placehold.it/400x400' }}" alt="" class="img img-responsive img-rounded">
-    <div><br><br><br><br><br><br><br><br>
+    <div style="margin-top:150%;">
       <button class="btn btn-info" id="tabResBtn" >Make table responsive</button>
     </div>
+    <div><br>
+      <button class="btn btn-info" id="fixColBtn" >Make table responsive and fix first column</button>
+  </div>
   </div>
 </div><hr><br><br><br><br><br><br>
   @include('includes.form_error')

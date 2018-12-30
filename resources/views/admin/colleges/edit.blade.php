@@ -37,7 +37,7 @@
     </div>
     <div class="form-group">
         <label for="clgBody">Description:</label>
-        <textarea class="form-control" name="body" rows="5" id="clgBody">{{ $college->body }}</textarea>
+        <textarea class="form-control" name="body" rows="20" id="clgBody">{{ $college->body }}</textarea>
     </div>
     <button type="submit" class="btn btn-primary edit-btn">Submit</button> 
     {!! Form::close() !!}
@@ -47,6 +47,14 @@
   </div>
   <div class="col-sm-3">
     <img src="{{ $college->photo? $college->photo->file: 'http://placehold.it/400x400' }}" alt="" class="img img-responsive img-rounded">
+    <div class="col-sm-3">
+        <div style="margin-top:250%;">
+            <button class="btn btn-info" id="tabResBtn" >Make table responsive</button>
+        </div>
+        <div><br>
+            <button class="btn btn-info" id="fixColBtn" >Make table responsive and fix first column</button>
+        </div>
+    </div>
   </div>
 </div><hr><br><br>
   @include('includes.form_error')
