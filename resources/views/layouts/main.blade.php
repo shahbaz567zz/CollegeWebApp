@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>College T Point</title>
+	<title>
+		{{ config('app.site_first_name').config('app.site_middle_name').config('app.site_last_name') }}
+	</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="college t point">
 	<meta name="keywords" content="college, uptu, aktu, aieee, exam, student, admission, study">
@@ -38,7 +40,7 @@
 			<!-- logo -->
 			<a class="site-logo" href="/">
 				{{-- <img src="{{ asset('images/logo.png') }}" alt=""> --}}
-				<span class="logo-small">college</span><span class="logo-large">T</span><span class="logo-small">point</span>
+			<span class="logo-small">{{ config('app.site_first_name') }}</span><span class="logo-large">{{ config('app.site_middle_name') }}</span><span class="logo-small">{{ config('app.site_last_name') }}</span>
 			</a>
 
 			
@@ -104,9 +106,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	
-
+	<script src="{{asset('js/libs.js')}}"></script>
+    <script src="{{asset('js/blog-post.js')}}"></script>
 	<script src="{{asset('js/main.js')}}"></script>
     </body>
 </html>

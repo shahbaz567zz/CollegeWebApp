@@ -111,6 +111,25 @@ return [
     'log' => env('APP_LOG', 'single'),
 
     /*
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the settings specific to a particular site.
+    |
+    |
+    */
+
+    'site_first_name' => env('SITE_F_NAME', ''),
+    'site_middle_name' => env('SITE_M_NAME', ''),
+    'site_last_name' => env('SITE_L_NAME', ''),
+    'site_email' => env('SITE_EMAIL', ''),
+
+    /*
+
+
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
