@@ -94,7 +94,7 @@
                         </div> --}}
                         <div class="review-text">
                             <h5>Contact Admin</h5>
-                            <p>If you want to use this space to advertise with us. Please mail us @ <a href="mailto:collegeuturn@gmail.com?subject=Advertisement%20Request">collegeuturn@gmail.com</a></p>
+                            <p>If you want to use this space to advertise with us. Please mail us @ <a href="mailto:{{ config('app.site_email') }}?subject=Advertisement%20Request">{{ config('app.site_email') }}</a></p>
                         </div>
                     </div>
                 </div>

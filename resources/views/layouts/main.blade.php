@@ -5,7 +5,7 @@
 		{{ config('app.site_first_name').config('app.site_middle_name').config('app.site_last_name') }}
 	</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="college t point">
+	<meta name="description" content="{{ config('app.site_first_name').config('app.site_middle_name').config('app.site_last_name') }}">
 	<meta name="keywords" content="college, uptu, aktu, aieee, exam, student, admission, study">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->   
@@ -94,7 +94,7 @@
 				<li><a href="contact.html">About Us</a></li> --}}
 			</ul>
 			<p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | collegeTpoint
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | {{ config('app.site_name') }}
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
 		</div>
