@@ -126,6 +126,7 @@ return [
     'site_middle_name' => env('SITE_M_NAME', ''),
     'site_last_name' => env('SITE_L_NAME', ''),
     'site_email' => env('SITE_EMAIL', ''),
+    'site_name' => env('SITE_NAME', ''),
 
     /*
 
