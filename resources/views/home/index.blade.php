@@ -101,7 +101,7 @@
 						</div>
 						<div class="rgi-content">
 							<h5>{!! $post->title !!}</h5>
-							<p>{!! strlen($post->body) > 300 ? substr($post->body,0,300)."..." : $post->body !!}
+							<p><p>{!! strlen($post->body)>250 ? (strpos(substr($post->body,0,250), '<table') ?strip_tags(substr($post->body,0,strpos(substr($post->body,0,250), '<table'))): strip_tags(substr($post->body,0,250))) : strip_tags($post->body) !!}</p>
 								<a href="{{ route('home.post', $post->id) }}">Read More</a>
 							</p>
 							<a href="#" class="comment">{{ count($post->comment) }} Comments</a>

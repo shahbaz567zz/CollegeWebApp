@@ -36,6 +36,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/comments', 'PostCommentsController');
     Route::resource('admin/comments/replies', 'CommentRepliesController');
     Route::resource('admin/colleges', 'AdminCollegesController');
+    Route::resource('admin/news', 'NewsController');
     Route::get('admin/comment/{type}',['uses'=>'AdminCommentsController@index', 'as'=>'admin.comment'] );
     Route::get('admin/replies/{type}/{id}',['uses'=>'AdminCommentsController@replies', 'as'=>'admin.replies'] );
    

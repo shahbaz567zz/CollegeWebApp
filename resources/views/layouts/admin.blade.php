@@ -184,6 +184,25 @@
                         </li>
     
                         <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> News<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.news.index') }}">All News</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.news.create') }}">Create News</a>
+                                </li>
+                                {{-- <li>
+                                    <a href="{{ route('admin.news.categories.index') }}">News Categories</a>
+                                </li> --}}
+                                <li>
+                                    <a href="{{ route('admin.comment', 'NewsComments') }}">All Comments</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+    
+                        <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
