@@ -63,7 +63,7 @@
 			<nav class="main-menu">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="{{ route('home.comingsoon') }}">News</a></li>
+					<li><a href="{{ url('/news') }}">News</a></li>
 					<li><a href="{{ route('all.post') }}">Blog</a></li>
 					<li><a href="{{ route('home.comingsoon') }}">Top Exams</a></li>
 					<li><a href="{{ route('all.college') }}">Colleges</a></li>
@@ -85,7 +85,7 @@
 		<div class="container">
 			<ul class="footer-menu">
 				<li><a href="/">Home</a></li>
-				<li><a href="{{ route('home.comingsoon') }}">News</a></li>
+				<li><a href="{{ url('news@getNewsList') }}">News</a></li>
 				<li><a href="{{ route('all.post') }}">Blog</a></li>
 				<li><a href="{{ route('home.comingsoon') }}">Top Exams</a></li>
 				<li><a href="{{ route('home.comingsoon') }}">Colleges</a></li>

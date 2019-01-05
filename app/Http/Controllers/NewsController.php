@@ -118,4 +118,60 @@ class NewsController extends Controller
     {
         //
     }
+
+    /**
+     * Get News Categories
+     *
+     */
+    public function getCategories()
+    {
+        $categories = NewsCategory::all();
+        return view('admin.news.categories.index',compact('categories'));
+    }
+
+    /**
+     * Store News Categories
+     *
+     */
+    public function storeCategories(Request $request)
+    {
+        $input = $request->all();
+        NewsCategory::create($input);
+        return redirect()->back();
+    }
+
+    /**
+     * Delete News Category
+     *
+     */
+    public function destroyCategory($id)
+    {
+        $category = NewsCategory::findOrFail($id);
+        $category->delete();
+        return redirect()->back();
+    }
+
+    /**
+     * Get News List to show on website public page
+     *
+     */
+    public function getNewsList()
+    {
+        $news = News::paginate(10);
+        // echo "<pre>";
+        // print_r($news);
+        return view('news.index',compact('news'));
+    }
+
+    /**
+     * Get Single News
+     *
+     */
+    public function getSingleNews($id)
+    {
+        $news = News::findOrFail($id);
+        $comments = $news->comments()->where('is_active',1)->get();
+        return view('news.single', compact('news','comments'));
+    }
+
 }

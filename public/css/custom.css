@@ -92,6 +92,14 @@ thead{
     color: #ffffff;
 }
 
+.recent-game-item .news-content {
+    padding: 26px 22px 20px;
+    background: #fff;
+    border: 1px solid #d6dee7;
+    /* border-top: none; */
+    position: relative;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .hero-text h1 {

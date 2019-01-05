@@ -192,9 +192,9 @@
                                 <li>
                                     <a href="{{ route('admin.news.create') }}">Create News</a>
                                 </li>
-                                {{-- <li>
-                                    <a href="{{ route('admin.news.categories.index') }}">News Categories</a>
-                                </li> --}}
+                                <li>
+                                    <a href="{{ route('admin.news.categories') }}">News Categories</a>
+                                </li>
                                 <li>
                                     <a href="{{ route('admin.comment', 'NewsComments') }}">All Comments</a>
                                 </li>
