@@ -48,9 +48,14 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/news/categories/store', 'NewsController@storeCategories');
     Route::get('admin/news/categories', ['uses'=>'NewsController@getCategories', 'as'=>'admin.news.categories']);
     Route::resource('admin/news', 'NewsController');
+    Route::post('admin/news/replies/update/{id}',['uses'=>'AdminCommentsController@updateNewsCommentReplies', 'as'=>'admin.news.replies.update'] );
+    Route::delete('admin/news/replies/delete/{id}',['uses'=>'AdminCommentsController@deleteNewsCommentReplies', 'as'=>'admin.news.replies.delete'] );
+    Route::post('admin/news/comment/update/{id}',['uses'=>'AdminCommentsController@updateNewsComment', 'as'=>'admin.news.comment.update'] );
+    Route::delete('admin/news/comment/delete/{id}',['uses'=>'AdminCommentsController@deleteNewsComment', 'as'=>'admin.news.comment.delete'] );
     
     Route::get('admin/comment/{type}',['uses'=>'AdminCommentsController@index', 'as'=>'admin.comment'] );
     Route::get('admin/replies/{type}/{id}',['uses'=>'AdminCommentsController@replies', 'as'=>'admin.replies'] );
+    
    
 });
 
@@ -60,5 +65,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('comment/reply', 'CommentRepliesController@createReply');
     Route::post('college/comment/reply', ['as'=>'college.comment.reply.post', 'uses'=>'CollegesController@storeCollegeCommentReply']);
     Route::post('college/comment', ['as'=>'college.comment.post', 'uses'=>'CollegesController@storeCollegeComment']);
+    //News Comment routes
+    Route::post('news/comment/reply', ['as'=>'news.comment.reply.post', 'uses'=>'NewsController@storeNewsCommentReply']);
+    Route::post('news/comment', ['as'=>'news.comment.post', 'uses'=>'NewsController@storeNewsComment']);
     
 });

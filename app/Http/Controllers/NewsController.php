@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Photo;
 use App\NewsCategory;
 use App\News;
+use App\NewsComment;
+use App\NewsCommentReply;
 use App\User;
 use App\Role;
 use DB;
@@ -172,6 +174,48 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $comments = $news->comments()->where('is_active',1)->get();
         return view('news.single', compact('news','comments'));
+    }
+
+    /**
+     * Post News Comment
+     *
+     */
+    public function storeNewsComment(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = [
+            'news_id' => $request->news_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'body' => $request->body,
+            'user_id' => $user->id
+        ];
+
+        NewsComment::create($data);
+        $request->session()->flash('comment_message','Your message has been submitted and waiting moderation');
+        return redirect()->back();
+    }
+
+    /**
+     * Post News Comment Reply
+     *
+     */
+    public function storeNewsCommentReply(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = [
+            'news_comment_id' => $request->news_comment_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'body' => $request->body,
+            'user_id' => $user->id
+        ];
+
+        NewsCommentReply::create($data);
+        $request->session()->flash('comment_message','Your reply has been submitted and waiting moderation');
+        return redirect()->back();
     }
 
 }

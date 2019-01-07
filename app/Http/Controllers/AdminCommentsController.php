@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\CollegeComment;
+use App\NewsComment;
+use App\NewsCommentReply;
 
 class AdminCommentsController extends Controller
 {
@@ -22,6 +24,10 @@ class AdminCommentsController extends Controller
                 $comments = $this->getCollegeComments();
                 return view('admin.comments.college.index',compact('comments'));
                 break;
+            case "NewsComments":
+                $comments = $this->getNewsComments();
+                return view('admin.comments.news.index',compact('comments'));
+                break;
             default:
                 echo "Nothing to show. Something went wrong";
         }
@@ -32,6 +38,10 @@ class AdminCommentsController extends Controller
             case "CollegeCommentReplies":
                 $replies = $this->getCollegeCommentsReply($id);
                 return view('admin.comments.replies.college.index',compact('replies'));
+                break;
+            case "NewsCommentReplies":
+                $replies = $this->getNewsCommentsReply($id);
+                return view('admin.comments.replies.news.index',compact('replies'));
                 break;
             default:
                 echo "Nothing to show. Something went wrong";
@@ -90,7 +100,7 @@ class AdminCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'world';
     }
 
     /**
@@ -113,6 +123,43 @@ class AdminCommentsController extends Controller
         $comment = CollegeComment::findOrFail($id);
         $replies = $comment->replies;
         return $replies;
+    }
+
+    // Get News Comments for Admin
+    private function getNewsComments(){
+        $comments = NewsComment::paginate(7);
+        return $comments;
+    }
+
+    // Get News Comment Replies for Admin
+    public function getNewsCommentsReply($id){
+        $comment = NewsComment::findOrFail($id);
+        $replies = $comment->replies;
+        return $replies;
+    }
+
+    // Approve or Reject News Comment Replies request
+    public function updateNewsCommentReplies(Request $request, $id){
+        $comment = NewsCommentReply::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    }
+
+    // Delete News Comment Replies
+    public function deleteNewsCommentReplies($id){
+        $comment = NewsCommentReply::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
+    // Approve or Reject News Comment  request
+    public function updateNewsComment(Request $request, $id){
+        $comment = NewsComment::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    }
+
+    // Delete News Comment 
+    public function deleteNewsComment($id){
+        $comment = NewsComment::findOrFail($id)->delete();
+        return redirect()->back();
     }
 
 }
