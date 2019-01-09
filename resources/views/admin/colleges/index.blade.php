@@ -14,6 +14,8 @@
             <th>REGION</th>
             <th>CATEGORIES</th>
             <th>EDIT</th>
+            <th>VIEW</th>
+            <th>COMMENTS</th>
             <th>UPDATED</th>
         </tr>
         </thead>
@@ -33,6 +35,8 @@
                     @endforeach
                     </td>
                     <td scope="row"><a href="{{ route('admin.colleges.edit', $college->id) }}">edit</a></td>
+                    <td scope="row"><a href="{{ route('home.college', $college->id) }}">view</a></td>
+                    <td scope="row"><a href="{{ route('admin.college.comments.show', $college->id) }}">view comments</a></td>
                     <td scope="row">{{$college->updated_at->diffForHumans()}}</td>
                 </tr>
                 @endforeach

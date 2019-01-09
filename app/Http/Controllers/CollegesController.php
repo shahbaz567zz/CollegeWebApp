@@ -131,5 +131,46 @@ class CollegesController extends Controller
         return redirect()->back();
 
     }
+
+    // Get Comments List for a college on admin page
+    public function getSingleCollegeComments($id){
+        $college = College::findOrFail($id);
+        $comments = $college->comments;
+        // echo "<pre>";
+        // print_r($comments);
+        // exit;
+        return view('admin.comments.college.show', compact('comments'));
+    }
+
+    // Get College Comment Replies for Admin
+    public function getCollegeCommentsReply($id){
+        $comment = CollegeComment::findOrFail($id);
+        $replies = $comment->replies;
+        return view('admin.comments.replies.college.index', compact('replies'));
+    }
+
+    // Approve or Reject College Comment Replies request
+    public function updateCollegeCommentReply(Request $request, $id){
+        $comment = CollegeCommentReply::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    }
+
+    // Delete College Comment Reply
+    public function deleteCollegeCommentReply($id){
+        $comment = CollegeCommentReply::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
+    // Approve or Reject College Comment  request
+    public function updateCollegeComment(Request $request, $id){
+        $comment = CollegeComment::findOrFail($id)->update($request->all());
+        return redirect()->back();
+    }
+
+    // Delete College Comment 
+    public function deleteCollegeComment($id){
+        $comment = CollegeComment::findOrFail($id)->delete();
+        return redirect()->back();
+    }
     
 }

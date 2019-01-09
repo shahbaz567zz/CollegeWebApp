@@ -37,12 +37,23 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/headlines', 'AdminHeadlinesController');
     Route::resource('admin/categories', 'AdminCategoriesController');
-    Route::resource('admin/college/regions', 'AdminCollegeRegionsController');
-    Route::resource('admin/college/categories', 'AdminCollegeCategoriesController');
+    
     Route::resource('admin/media', 'AdminMediasController');
     Route::resource('admin/comments', 'PostCommentsController');
     Route::resource('admin/comments/replies', 'CommentRepliesController');
+    
+
+    //College routes
     Route::resource('admin/colleges', 'AdminCollegesController');
+    Route::get('admin/colleges/single/comment/{id}', ['uses'=>'CollegesController@getSingleCollegeComments', 'as'=>'admin.college.comments.show']);
+    Route::get('admin/colleges/comment/replies/{id}', ['uses'=>'CollegesController@getCollegeCommentsReply', 'as'=>'admin.college.comment.replies.show']);
+    Route::post('admin/colleges/replies/update/{id}',['uses'=>'CollegesController@updateCollegeCommentReply', 'as'=>'admin.College.replies.update'] );
+    Route::delete('admin/colleges/replies/delete/{id}',['uses'=>'CollegesController@deleteCollegeCommentReply', 'as'=>'admin.College.replies.delete'] );
+    Route::post('admin/colleges/comment/update/{id}',['uses'=>'CollegesController@updateCollegeComment', 'as'=>'admin.College.comment.update'] );
+    Route::delete('admin/colleges/comment/delete/{id}',['uses'=>'CollegesController@deleteCollegeComment', 'as'=>'admin.College.comment.delete'] );
+    Route::resource('admin/college/regions', 'AdminCollegeRegionsController');
+    Route::resource('admin/college/categories', 'AdminCollegeCategoriesController');
+
     //News routes
     Route::delete('admin/news/categories/delete/{categoryid}', 'NewsController@destroyCategory');
     Route::post('admin/news/categories/store', 'NewsController@storeCategories');
