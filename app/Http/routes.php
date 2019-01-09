@@ -57,14 +57,16 @@ Route::group(['middleware' => 'admin'], function(){
     //News routes
     Route::delete('admin/news/categories/delete/{categoryid}', 'NewsController@destroyCategory');
     Route::post('admin/news/categories/store', 'NewsController@storeCategories');
+    Route::get('admin/news/single/comment/{id}', ['uses'=>'NewsController@getSingleCollegeComments', 'as'=>'admin.college.comments.show']);
+    Route::get('admin/news/comment/replies/{id}', ['uses'=>'NewsController@getCollegeCommentsReply', 'as'=>'admin.college.comment.replies.show']);
     Route::get('admin/news/categories', ['uses'=>'NewsController@getCategories', 'as'=>'admin.news.categories']);
-    Route::resource('admin/news', 'NewsController');
     Route::post('admin/news/replies/update/{id}',['uses'=>'AdminCommentsController@updateNewsCommentReplies', 'as'=>'admin.news.replies.update'] );
     Route::delete('admin/news/replies/delete/{id}',['uses'=>'AdminCommentsController@deleteNewsCommentReplies', 'as'=>'admin.news.replies.delete'] );
     Route::post('admin/news/comment/update/{id}',['uses'=>'AdminCommentsController@updateNewsComment', 'as'=>'admin.news.comment.update'] );
     Route::delete('admin/news/comment/delete/{id}',['uses'=>'AdminCommentsController@deleteNewsComment', 'as'=>'admin.news.comment.delete'] );
-    
-    Route::get('admin/comment/{type}',['uses'=>'AdminCommentsController@index', 'as'=>'admin.comment'] );
+    Route::resource('admin/news', 'NewsController');
+
+    Route::get('admin/comment/{type}/{id?}',['uses'=>'AdminCommentsController@index', 'as'=>'admin.comment'] );
     Route::get('admin/replies/{type}/{id}',['uses'=>'AdminCommentsController@replies', 'as'=>'admin.replies'] );
     
    

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\CollegeComment;
+use App\News;
 use App\NewsComment;
 use App\NewsCommentReply;
 
@@ -27,6 +28,10 @@ class AdminCommentsController extends Controller
             case "NewsComments":
                 $comments = $this->getNewsComments();
                 return view('admin.comments.news.index',compact('comments'));
+                break;
+            case "SingleNewsComments":
+                $comments = $this->getSingleNewsComments($id);
+                return view('admin.comments.news.index', compact('comments'));
                 break;
             default:
                 echo "Nothing to show. Something went wrong";
@@ -125,9 +130,19 @@ class AdminCommentsController extends Controller
         return $replies;
     }
 
-    // Get News Comments for Admin
+    // Get All News Comments for Admin
     private function getNewsComments(){
         $comments = NewsComment::paginate(7);
+        return $comments;
+    }
+
+    // Get Single News Comments for Admin
+    private function getSingleNewsComments($id){
+        $news = News::findOrFail($id);
+        $comments = $news->comments()->paginate(7);
+        // echo "<pre>";
+        // print_r($comments);
+        // exit;
         return $comments;
     }
 
