@@ -15,7 +15,7 @@
                         <a href="{{ route('home.post', $post->id) }}">
                         <div class="recent-game-item">
                             <div class="rgi-thumb set-bg" data-setbg="{{ $post->photo?$post->photo->file:'' }}">
-                                <div class="cata {{ $color[1] }}">{{ $post->category->name }}</div>
+                                <div class="cata {{ $color[1] }}">{{ $post->category?$post->category->name:'General' }}</div>
                             </div>
                             <div class="rgi-content">
                                 <h5>{{ $post->title }}</h5>
