@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\College;
+use TableHelper;
 use Auth;
 use App\CollegeComment;
 use App\CollegeCommentReply;
