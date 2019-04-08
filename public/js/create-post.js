@@ -45,4 +45,8 @@ $(document).ready(function(){
         console.log($('#resTableDiv').html());
         
     });
+
+
+    
 });
+

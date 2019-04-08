@@ -193,6 +193,19 @@
                         </li>
     
                         <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Tables<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.table.index') }}">All Tables</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.table.create') }}">Create Table</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+    
+                        <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
