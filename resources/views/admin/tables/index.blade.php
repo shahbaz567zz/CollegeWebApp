@@ -19,12 +19,14 @@
                 @foreach ($tables as $table)
                 <tr>
                     <td scope="row">{{$table->id}}</td>
-                    <td scope="row">[[{{ $table->title }}]]</td>
-                    <td scope="row">{{ $table->body }}</td>
+                    <td scope="row">
+                        <span>[[{{ $table->title }}]]</span><a class="btn table-name" href="javascript:void(0)"><i class="fa fa-copy"></i> copy</a>
+                    </td>
+                    <td scope="row">{{ strlen($table->body)>300 ? strip_tags(substr($table->body,0,300))."..." : strip_tags($table->body) }}</td>
                     <td scope="row"><a href="{{ route('admin.table.show',$table->id) }}">view table</a></td>
                     <td scope="row">
                         {!! Form::open(['method' => 'DELETE','onsubmit'=>'return confirm("Do you really want to delete the table?")', 'action' => ['TableController@destroy', $table->id]]) !!}
-                            <br><button type="submit" class="btn btn-danger delete-btn">Delete</button>
+                            <button type="submit" class="btn btn-danger delete-btn">Delete</button>
                         {!! Form::close() !!}
                     </td>
                     <td scope="row">{{$table->updated_at->diffForHumans()}}</td>
@@ -34,4 +36,8 @@
         </tbody>
 </table>
     
+@endsection
+
+@section('script')
+    <script src="{{asset('js/table-responsive.js')}}"></script>
 @endsection

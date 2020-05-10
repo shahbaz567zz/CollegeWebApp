@@ -20,3 +20,14 @@ function makeTableResponsive(){
     
     console.log($('#resTableDiv').html());
 }
+
+// Copy the text to clipboard
+$(document).on('click','.table-name', function(){
+    var txt = $(this).parent().find('span').text();
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(txt).select();
+    document.execCommand("copy");
+    $temp.remove();
+    alert('copied');
+});

@@ -46,7 +46,9 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/table', 'TableController');
 
     //College routes
+    Route::get('admin/collegedetails/{id}/edit', ['uses'=> 'AdminCollegesController@editCollegeDetails', 'as' => 'admin.collegedetail.edit']);
     Route::resource('admin/colleges', 'AdminCollegesController');
+    
     Route::get('admin/colleges/single/comment/{id}', ['uses'=>'CollegesController@getSingleCollegeComments', 'as'=>'admin.college.comments.show']);
     Route::get('admin/colleges/comment/replies/{id}', ['uses'=>'CollegesController@getCollegeCommentsReply', 'as'=>'admin.college.comment.replies.show']);
     Route::post('admin/colleges/replies/update/{id}',['uses'=>'CollegesController@updateCollegeCommentReply', 'as'=>'admin.College.replies.update'] );

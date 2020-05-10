@@ -11,6 +11,7 @@ use App\User;
 use App\Role;
 use DB;
 use Auth;
+use App\Helpers\TableHelper;
 
 use App\Http\Requests;
 
@@ -133,6 +134,10 @@ class AdminPostsController extends Controller
     }
     public function post($id){
         $post = Post::findOrFail($id);
+
+        // get table html from table shortcode
+        $postBody = $post['body'];
+        $post['body'] = TableHelper::getTableHtml($postBody);
         $comments = $post->comments()->where('is_active',1)->get();
         return view('post', compact('post','comments'));
     }

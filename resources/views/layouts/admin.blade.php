@@ -100,9 +100,9 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
+                        </li> --}}
     
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
@@ -160,7 +160,7 @@
                                 <li>
                                     <a href="{{ route('admin.colleges.create') }}">Create College</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('admin.college.categories.index') }}">College Categories</a>
                                 </li>
                                 <li>
@@ -168,7 +168,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.comment', 'CollegeComments') }}">All Comments</a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

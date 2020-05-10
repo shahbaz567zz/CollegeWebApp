@@ -92,4 +92,5 @@ class TableController extends Controller
         $table->delete();
         return redirect('/admin/table');
     }
+
 }
