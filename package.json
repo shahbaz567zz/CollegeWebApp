@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "laravel-elixir": "^6.0.0-18",
     "lazy-debug-legacy": "^0.0.1",
     "node-sass": "^4.9.3"
